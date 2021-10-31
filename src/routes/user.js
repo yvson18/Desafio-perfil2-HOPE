@@ -4,7 +4,7 @@ const UserQuerier = require("../database/queries/userQuery");
 
 router.get("/reads",(req,res)=>{
     UserQuerier.readUser().then((results)=>{
-       res.status(200).json({User: results});
+       res.status(201).json({User: results});
     })
     .catch((error) => {
         res.status(417).json({title: "error", status: error.errno,message: error})
@@ -13,7 +13,11 @@ router.get("/reads",(req,res)=>{
 
 router.get("/read/:id",(req,res)=>{
     UserQuerier.readUserById(req.params.id).then((results)=>{
-        res.status(200).json({results});
+        if(results == null){
+            res.status(417).json({erro: "User not found!"});
+        }else{
+            res.status(201).json({results});
+        }
     })
     .catch((error) => {
         res.status(417).json({title: "error", status: error.errno,message: error})
@@ -23,7 +27,7 @@ router.get("/read/:id",(req,res)=>{
 router.post("/create",(req,res)=>{
     UserQuerier.createUser(req.body).then((result)=>{
         if(result == -1){
-            res.status(417).json({title: "error", message: "User already exists"})
+            res.status(417).json({erro: "User already exists"});
         }
         // não retorna a senha encriptada
         var result_copia = JSON.parse(JSON.stringify(result));
@@ -37,7 +41,11 @@ router.post("/create",(req,res)=>{
 
 router.put("/update/:id",(req,res)=>{
     UserQuerier.updateUserById(req.params.id,req.body).then((results)=>{
-        res.status(201).json({results});
+        if(results == null){
+            res.status(417).json({erro: "User not found!"});
+        }else{
+            res.status(201).json({results});
+        }
     })
     .catch((error) => {
         res.status(417).json({title: "error", status: error.errno,message: error})
@@ -45,8 +53,12 @@ router.put("/update/:id",(req,res)=>{
 });
 
 router.delete("/delete/:id",(req,res)=>{
-    UserQuerier.updateUserById(req.params.id).then((results)=>{
-        res.status(200).json({results});
+    UserQuerier.deleteUserById(req.params.id).then((results)=>{
+        if(results == null){
+            res.status(417).json({erro: "User not found!"});
+        }else{
+            res.status(201).json({results});
+        }
     })
     .catch((error) => {
         res.status(417).json({title: "error", status: error.errno,message: error})
