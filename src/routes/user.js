@@ -2,27 +2,51 @@ const express = require("express");
 const router = express.Router();
 const UserQuerier = require("../database/queries/userQuery");
 
-router.get("/users",(req,res)=>{
+router.get("/reads",(req,res)=>{
     UserQuerier.readUser().then((results)=>{
-        res.status(200).json({User: results});
+       res.status(200).json({User: results});
     })
     .catch((error) => {
         res.status(417).json({title: "error", status: error.errno,message: error})
     });
 });
 
-router.get("/user/:id",(req,res)=>{
+router.get("/read/:id",(req,res)=>{
     UserQuerier.readUserById(req.params.id).then((results)=>{
-        res.status(200).json({User: results});
+        res.status(200).json({results});
     })
     .catch((error) => {
         res.status(417).json({title: "error", status: error.errno,message: error})
     });
 });
 
-router.post("/register",(req,res)=>{
+router.post("/create",(req,res)=>{
     UserQuerier.createUser(req.body).then((result)=>{
-        res.status(201).json({User: result});
+        if(result == -1){
+            res.status(417).json({title: "error", message: "User already exists"})
+        }
+        // não retorna a senha encriptada
+        var result_copia = JSON.parse(JSON.stringify(result));
+        delete result_copia.password;
+        res.status(201).json({User: result_copia});
+    })
+    .catch((error) => {
+        res.status(417).json({title: "error", status: error.errno,message: error})
+    });
+});
+
+router.put("/update/:id",(req,res)=>{
+    UserQuerier.updateUserById(req.params.id,req.body).then((results)=>{
+        res.status(201).json({results});
+    })
+    .catch((error) => {
+        res.status(417).json({title: "error", status: error.errno,message: error})
+    });
+});
+
+router.delete("/delete/:id",(req,res)=>{
+    UserQuerier.updateUserById(req.params.id).then((results)=>{
+        res.status(200).json({results});
     })
     .catch((error) => {
         res.status(417).json({title: "error", status: error.errno,message: error})

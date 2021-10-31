@@ -5,10 +5,21 @@ exports.readUser = async () =>{
 }
 
 exports.readUserById = async (id) =>{
-    return await User.findOne({_id:id});
+    return await User.findById(id);
 }
 
 exports.createUser = async (input) =>{
-    return await User.create(input);
+    if(await User.findOne({email: input.email})){
+        return -1;
+    }else{
+        return await User.create(input);
+    }
 }
 
+exports.updateUserById = async (id,input) =>{
+    return await User.findByIdAndUpdate(id,input,{new: true});
+}
+
+exports.deleteUserById = async (id) =>{
+    return await User.findByIdAndDelete(id);
+}
