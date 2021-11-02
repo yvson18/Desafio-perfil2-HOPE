@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const UserQuerier = require("../database/queries/userQuery");
 
+//----------------- CRUD BÁSICO ----------------------
 router.get("/reads",(req,res)=>{
     UserQuerier.readUser().then((results)=>{
        res.status(201).json({User: results});
@@ -42,7 +43,7 @@ router.post("/create",(req,res)=>{
 router.put("/update/:id",(req,res)=>{
     UserQuerier.updateUserById(req.params.id,req.body).then((results)=>{
         if(results == null){
-            res.status(417).json({erro: "User not found!"});
+            res.status(422).json({erro: "User not found!"});
         }else{
             res.status(201).json({results});
         }
@@ -55,10 +56,38 @@ router.put("/update/:id",(req,res)=>{
 router.delete("/delete/:id",(req,res)=>{
     UserQuerier.deleteUserById(req.params.id).then((results)=>{
         if(results == null){
-            res.status(417).json({erro: "User not found!"});
+            res.status(422).json({erro: "User not found!"});
         }else{
             res.status(201).json({results});
         }
+    })
+    .catch((error) => {
+        res.status(417).json({title: "error", status: error.errno,message: error})
+    });
+});
+
+//----------------------------------------------------
+
+router.put("/permitir_especialista/:id", (req,res)=>{
+    UserQuerier.darPerEspByIdPerfil(req.params.id).then((result)=>{
+        if(result.matchedCount == 0){
+            res.status(422).json({operation: "User not Found!"});
+            return;
+        }
+        if(result.modifiedCount == 0){
+            res.status(202).json({operation: "User already allowed!"});
+            return;
+        }
+        res.status(201).json({operation: "User allowed!"});
+    })
+    .catch((error) => {
+        res.status(417).json({title: "error", status: error.errno,message: error})
+    });
+});
+
+router.put("/sobrio_checkin/:id",(req,res)=>{
+    UserQuerier.sobrioCheckinById(req.params.id).then((result)=>{
+        res.status(202).json({output: Number(result.dias_sobrio + 1)});
     })
     .catch((error) => {
         res.status(417).json({title: "error", status: error.errno,message: error})

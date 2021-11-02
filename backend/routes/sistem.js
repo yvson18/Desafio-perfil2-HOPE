@@ -3,8 +3,12 @@ var express = require('express');
 var router = express.Router();
 
 var usersRouter = require("./user.js");
+var cardsRouter = require("./cards.js");
+var reactionsRouter = require("./reaction.js");
 
 router.use("/users",usersRouter);
+router.use("/cards",cardsRouter);
+router.use("/reactions",reactionsRouter);
 
 router.get("/",(req,res)=>{
     return res.json({message:"Template API REST + MongoDB"});

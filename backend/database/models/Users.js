@@ -15,6 +15,7 @@ const UserSchema = new mongoose.Schema({
     },
     cpf:{
         type: String,
+        unique: true,
         required: true
     },
     email:{
@@ -28,12 +29,25 @@ const UserSchema = new mongoose.Schema({
         required: true,
         select: false
     },
+    ocupacao: {
+        type: String
+    },
     descricao: {
-        type: String,
+        type: String
     },
     perfil:{
         type: Number,
         required: true
+    },
+    img:{
+        type: String
+    },
+    link_docs:{
+        type: String
+    },
+    perm_espe:{
+        type: Boolean,
+        default: false
     },
     dias_sobrio:{
         type: Number
