@@ -71,14 +71,6 @@ router.delete("/delete/:id",(req,res)=>{
 
 router.put("/permitir_especialista/:id", (req,res)=>{
     UserQuerier.darPerEspByIdPerfil(req.params.id).then((result)=>{
-        if(result.matchedCount == 0){
-            res.status(422).json({operation: "User not Found!"});
-            return;
-        }
-        if(result.modifiedCount == 0){
-            res.status(202).json({operation: "User already allowed!"});
-            return;
-        }
         res.status(201).json({operation: "User allowed!"});
     })
     .catch((error) => {

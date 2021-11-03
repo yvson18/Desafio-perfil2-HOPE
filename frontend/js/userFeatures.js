@@ -38,13 +38,33 @@ const conteudoUpdate = document.getElementById("conteudo_up");
 //botoes
 const botaoListarUsers = document.querySelector("#listarusers");
 
+//staus online
+const statusOnline = document.querySelector(".status_online_form");
+const status_id_Online = document.getElementById("Id_status");
+const status_value = document.getElementById("status-value");
+
+//visibilidade publica
+const visiPublica = document.querySelector(".visi_pub_form");
+const visiPublica_id = document.getElementById("Id_visi_pub");
+const visiPublica_value = document.getElementById("visi_pub-value");
+
+//permissao especialista
+
+const permEsp = document.querySelector(".perm_esp_form");
+const permEsp_id = document.getElementById("Id_perm_esp");
+
+//Sobrio checkin
+const sobrioCheckin = document.querySelector(".sobrio_form");
+const sobrioCheckin_id = document.getElementById("Id_sobrio");
+
 //URLS
 const url_get_users = "http://localhost:3000/api/users/reads";
 const url_post_users = "http://localhost:3000/api/users/create";
 const url_get_user = "http://localhost:3000/api/users/read/";
 const url_delete_user = "http://localhost:3000/api/users/delete/";
 const url_update_user = "http://localhost:3000/api/users/update/";
-
+const url_permitir_especialista = "http://localhost:3000/api/users/permitir_especialista/";
+const url_sobrio_checkin = "http://localhost:3000/api/users/sobrio_checkin/";
 
 
 function renderUsers(data){
@@ -59,6 +79,7 @@ function renderUsers(data){
       <div class="card-body">
         <h5 class="card-title"><b>Nome: </b> ${nome}</h5>
         <h5 class="card-title"><b>Idade: </b> ${idade}</h5>
+        <h5 class="card-title"><b>Ocupacao: </b> ${ocupacao}</h5>
         <h5 class="card-title"><b>Ocupacao: </b> ${ocupacao}</h5>
         <h5 class="card-title"><b>Descricao:</h5>
         <p class="card-text">${descricao}</p>
@@ -85,16 +106,19 @@ getUserForm.addEventListener("submit", async(e)=>{
   fetch(url_get_user + userId.value)
   .then(res => res.json())
   .then(data => {
-    let nome = data.result.nome;
+    let nome = data.result.nome + " " + data.result.sobrenome;
+    let online = data.result.online === true ? "Online": "Offline";
     let idade = data.result.idade === undefined ? "" : data.result.idade;
     let ocupacao = data.result.ocupacao === undefined ? "" : data.result.ocupacao;
     let descricao = data.result.descricao === undefined ? "" : data.result.descricao;
+    
 
     output = `<div class="card" style="width: 18rem;">
                 <div class="card-body">
                   <h5 class="card-title"><b>Nome: </b> ${nome}</h5>
                   <h5 class="card-title"><b>Idade: </b> ${idade}</h5>
                   <h5 class="card-title"><b>Ocupacao: </b> ${ocupacao}</h5>
+                  <h5 class="card-title"><b>Status: </b> ${online}</h5>
                   <h5 class="card-title"><b>Descricao:</h5>
                   <p class="card-text">${descricao}</p>
                 </div>
@@ -198,4 +222,58 @@ deleteUserForm.addEventListener("submit",async(e)=>{
     deleteUserfield.innerHTML = ""; // limpa a div de listagem 
     deleteUserfield.innerHTML = output;
   });
+});
+
+//Status Online
+
+statusOnline.addEventListener("submit",async(e)=>{
+  e.preventDefault(); // elimina reload ao submeter form
+  console.log(status_id_Online.value, status_value.value);
+  var object_update = {online: status_value.value}
+  fetch(url_update_user + status_id_Online.value, {
+    method: "PUT",
+    headers:{
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(object_update)
+  }).then(res => res.json())
+  .then(data => {
+    console.log(data);
+  });
+});
+
+visiPublica.addEventListener("submit",async(e)=>{
+  e.preventDefault(); // elimina reload ao submeter form
+  console.log(visiPublica_id.value, visiPublica_value.value);
+  var object_update = {pub_men: visiPublica_value.value}
+  fetch(url_update_user + visiPublica_id.value, {
+    method: "PUT",
+    headers:{
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(object_update)
+  }).then(res => res.json())
+  .then(data => {
+    console.log(data);
+  });
+});
+
+permEsp.addEventListener("submit", async(e)=>{
+  e.preventDefault(); // elimina reload ao submeter form
+  fetch(url_permitir_especialista + permEsp_id.value, {
+    method: "PUT",
+    headers:{
+      "Content-Type": "application/json"
+    }
+  }).then(res => res.json())
+});
+
+sobrioCheckin.addEventListener("submit", async(e)=>{
+  e.preventDefault(); // elimina reload ao submeter form
+  fetch(url_sobrio_checkin + sobrioCheckin_id.value, {
+    method: "PUT",
+    headers:{
+      "Content-Type": "application/json"
+    }
+  }).then(res => res.json())
 });

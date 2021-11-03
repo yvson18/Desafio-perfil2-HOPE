@@ -161,20 +161,57 @@
     <br>
 
     <h2>Status online</h2>
-    <br>
     <h3 id = "onlineStatus"></h3>
-    <label for="online_id">Id: </label>
-    <input type="text"id="online_id">
-    <button type="submit" class="btn btn-success"id="online">Online</button>
-    <button type="submit" class="btn btn-danger"id="offline">Offline</button>
+    <div class="input-group">
+        <form class = "status_online_form">
+            <select class="form-select" id= "status-value">
+                <option selected disabled value="">Choose...</option>
+                <option value="1">Online</option>
+                <option value="0">Offline</option>
+            </select>
 
+            <label for="Id_status">Id: </label>
+            <input type="text"id="Id_status">
+            
+            <button type="submit" class="btn btn-warning">Send</button>
+        </form>
+    </div>
     <h2>Visibilidade pública</h2>
+    <div class="input-group">
+        <form class = "visi_pub_form">
+            <select class="form-select" id= "visi_pub-value">
+                <option selected disabled value="">Choose...</option>
+                <option value="0">False</option>
+                <option value="1">True</option>
+            </select>
+
+            <label for="Id_visi_pub">Id: </label>
+            <input type="text"id="Id_visi_pub">
+            
+            <button type="submit" class="btn btn-warning">Send</button>
+        </form>
+    </div>
     <br>
-    <h3 id = "visiStatus"></h3>
-    <label for="visi_id">Id: </label>
-    <input type="text"id="visi_id">
-    <button type="submit" class="btn btn-success"id="visi">Online</button>
-    <button type="submit" class="btn btn-danger"id="invi">Offline</button>
+
+    <h2>Dar Permissão ao Especialista</h2>
+    <div class="input-group">
+        <form class = "perm_esp_form">
+            <label for="Id_perm_esp">Id: </label>
+            <input type="text"id="Id_perm_esp">
+            
+            <button type="submit" class="btn btn-warning">Send</button>
+        </form>
+    </div>
+
+    <h2>Sóbrio Checkin</h2>
+    <div class="input-group">
+        <form class = "sobrio_form">
+            <label for="Id_sobrio">Id: </label>
+            <input type="text"id="Id_sobrio">
+            <button type="submit" class="btn btn-info">Checkin</button>
+        </form>
+    </div>
+    
     
     
     

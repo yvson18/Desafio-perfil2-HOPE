@@ -33,6 +33,7 @@ exports.deleteUserById = async (id) =>{
 //----------------------------------------------------
 
 exports.darPerEspByIdPerfil = async (id) => {
+   console.log(1); 
    return await User.where({_id: id, perfil: 4}).updateOne({perm_espe: true});
 }
 
