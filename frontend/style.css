@@ -1,0 +1,40 @@
+.container {
+    padding: 16px 0;
+    text-align:left;
+}
+
+
+.titulo{
+    text-align: center;
+    font-size: 70px;
+}
+
+#testar-user{
+    position: fixed;
+    right: 87rem;
+    bottom: 25rem;
+    background-color: blue;
+    width: 12rem;
+    height: 12rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 2rem;
+    color: #fff;
+}
+
+#testar-cards{
+    position: fixed;
+    right: 25rem;
+    bottom: 25rem;
+    background-color: red;
+    width: 12rem;
+    height: 12rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 2rem;
+    color: #fff;
+}

@@ -13,11 +13,11 @@ router.get("/reads",(req,res)=>{
 });
 
 router.get("/read/:id",(req,res)=>{
-    UserQuerier.readUserById(req.params.id).then((results)=>{
-        if(results == null){
+    UserQuerier.readUserById(req.params.id).then((result)=>{
+        if(result == null){
             res.status(417).json({erro: "User not found!"});
         }else{
-            res.status(201).json({results});
+            res.status(201).json({result});
         }
     })
     .catch((error) => {
@@ -26,6 +26,7 @@ router.get("/read/:id",(req,res)=>{
 });
 
 router.post("/create",(req,res)=>{
+    console.log(req.body);
     UserQuerier.createUser(req.body).then((result)=>{
         if(result == -1){
             res.status(417).json({erro: "User already exists"});
@@ -41,11 +42,11 @@ router.post("/create",(req,res)=>{
 });
 
 router.put("/update/:id",(req,res)=>{
-    UserQuerier.updateUserById(req.params.id,req.body).then((results)=>{
-        if(results == null){
+    UserQuerier.updateUserById(req.params.id,req.body).then((result)=>{
+        if(result == null){
             res.status(422).json({erro: "User not found!"});
         }else{
-            res.status(201).json({results});
+            res.status(201).json({result});
         }
     })
     .catch((error) => {
@@ -54,11 +55,11 @@ router.put("/update/:id",(req,res)=>{
 });
 
 router.delete("/delete/:id",(req,res)=>{
-    UserQuerier.deleteUserById(req.params.id).then((results)=>{
-        if(results == null){
+    UserQuerier.deleteUserById(req.params.id).then((result)=>{
+        if(result == null){
             res.status(422).json({erro: "User not found!"});
         }else{
-            res.status(201).json({results});
+            res.status(201).json({result});
         }
     })
     .catch((error) => {

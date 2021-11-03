@@ -49,6 +49,10 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    pub_men:{
+        type: Boolean,
+        default: false
+    },
     dias_sobrio:{
         type: Number
     },
@@ -57,6 +61,10 @@ const UserSchema = new mongoose.Schema({
     },
     relacao_familia:{
         type: Number
+    },
+    online:{
+        type: Boolean,
+        default: false
     },
     createAt:{
         type: Date,

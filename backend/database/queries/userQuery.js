@@ -9,10 +9,16 @@ exports.readUserById = async (id) =>{
 }
 
 exports.createUser = async (input) =>{
+    var result_copia = JSON.parse(JSON.stringify(input));
+    result_copia["idade"] = Number(result_copia["idade"]);
+    result_copia["perfil"] = Number(result_copia["perfil"]);
     if(await User.findOne({email: input.email})){
         return -1;
     }else{
-        return await User.create(input);
+        
+        console.log("entrei");
+        console.log(result_copia);
+        return await User.create(result_copia);
     }
 }
 

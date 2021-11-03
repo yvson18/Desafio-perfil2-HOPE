@@ -46,7 +46,7 @@ router.put("/update/:id",(req,res)=>{
     });
 });
 
-//------------------- DICAS, FATOS, MOTIVACIONAL, ARTIGO, HISTORIA DE SUCESSO, VIDEOS ----------------
+//------------------- DICAS, FATOS, MOTIVACIONAL, ARTIGO, HISTORIA DE SUCESSO, VIDEOS, PERGUNTAS ----------------
 router.post("/create_esp/:id_user",(req,res)=>{
     CardsQuerier.createEspCard(req.params.id_user,req.body).then((result)=>{
         //console.log(req.params.id_user)
