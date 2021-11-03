@@ -225,7 +225,6 @@ deleteUserForm.addEventListener("submit",async(e)=>{
 });
 
 //Status Online
-
 statusOnline.addEventListener("submit",async(e)=>{
   e.preventDefault(); // elimina reload ao submeter form
   console.log(status_id_Online.value, status_value.value);

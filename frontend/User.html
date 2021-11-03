@@ -8,11 +8,11 @@
     </head>
     <body>
         <nav><a href="index.html">Home</a></nav>
-        <h1>Teste User</h1>
+        <div class="container"><h1>Teste User</h1> </div>
         <br> <br> 
-        <h2>Create User</h2>
+        <div class="container"><h2>Create User</h2></div>
         <br> 
-
+<!--Create User-->
         <div class = "container">
             <form class= "add-user-form">
                 <div class= "form-group">
@@ -102,14 +102,16 @@
             </form>
         </div>
     <br><br>
-    
-    <h2>Listar Usuários cadastrados</h2>
-    <br>
-    <button type="button" class="btn btn-success" id = "listarusers">Listar</button>
-    
-    <br> <br>
-    <div class="userFileds row"></div>
+<!--Listar Usuarios-->
+    <div class = "container"> 
+        <h2>Listar Usuários cadastrados</h2>
+        <br>
+        <button type="button" class="btn btn-success" id = "listarusers">Listar</button>
+        <br> <br>
+        <div class="userFileds row"></div>
+    </div>
 
+    <div class = "container"> 
     <h2>Listar Usuário por id</h2>
     <form class = "get-user-form">
         <label for="getById">Get user by Id </label>
@@ -117,10 +119,11 @@
         <button type= "submit" class="btn btn-primary">get User</button>
     </form>
     <br>
-
+    
     <div class= "getUser row"></div>
     </div>
 
+    <div class = "container"> 
     <h2>Deletar Usuário por id</h2>
 
     <form class = "delete-user-form">
@@ -130,8 +133,11 @@
     </form>
     <br>
     <div class= "deleteUser row"></div>
+
     </div>
 
+
+    <div class = "container">
     <h2>Update User By Id</h2>
     <div class="input-group">
         <form class = "update-user-form">
@@ -159,57 +165,72 @@
         </form>
     </div>
     <br>
-
-    <h2>Status online</h2>
-    <h3 id = "onlineStatus"></h3>
-    <div class="input-group">
-        <form class = "status_online_form">
-            <select class="form-select" id= "status-value">
-                <option selected disabled value="">Choose...</option>
-                <option value="1">Online</option>
-                <option value="0">Offline</option>
-            </select>
-
-            <label for="Id_status">Id: </label>
-            <input type="text"id="Id_status">
-            
-            <button type="submit" class="btn btn-warning">Send</button>
-        </form>
-    </div>
-    <h2>Visibilidade pública</h2>
-    <div class="input-group">
-        <form class = "visi_pub_form">
-            <select class="form-select" id= "visi_pub-value">
-                <option selected disabled value="">Choose...</option>
-                <option value="0">False</option>
-                <option value="1">True</option>
-            </select>
-
-            <label for="Id_visi_pub">Id: </label>
-            <input type="text"id="Id_visi_pub">
-            
-            <button type="submit" class="btn btn-warning">Send</button>
-        </form>
-    </div>
-    <br>
-
-    <h2>Dar Permissão ao Especialista</h2>
-    <div class="input-group">
-        <form class = "perm_esp_form">
-            <label for="Id_perm_esp">Id: </label>
-            <input type="text"id="Id_perm_esp">
-            
-            <button type="submit" class="btn btn-warning">Send</button>
-        </form>
     </div>
 
-    <h2>Sóbrio Checkin</h2>
-    <div class="input-group">
-        <form class = "sobrio_form">
-            <label for="Id_sobrio">Id: </label>
-            <input type="text"id="Id_sobrio">
-            <button type="submit" class="btn btn-info">Checkin</button>
-        </form>
+    <div class = "container">
+        <h2>Status online</h2>
+        <h3 id = "onlineStatus"></h3>
+        <div class="input-group">
+            <form class = "status_online_form">
+                <select class="form-select" id= "status-value">
+                    <option selected disabled value="">Choose...</option>
+                    <option value="1">Online</option>
+                    <option value="0">Offline</option>
+                </select>
+
+                <label for="Id_status">Id: </label>
+                <input type="text"id="Id_status">
+                
+                <button type="submit" class="btn btn-warning">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <div class = "container">
+        <br>
+        <h2>Visibilidade pública</h2>
+        <div class="input-group">
+            <form class = "visi_pub_form">
+                <select class="form-select" id= "visi_pub-value">
+                    <option selected disabled value="">Choose...</option>
+                    <option value="0">False</option>
+                    <option value="1">True</option>
+                </select>
+
+                <label for="Id_visi_pub">Id: </label>
+                <input type="text"id="Id_visi_pub">
+                
+                <button type="submit" class="btn btn-warning">Send</button>
+            </form>
+        </div>
+        <br>
+    </div>
+
+    <div class = "container">
+        <br>
+        <h2>Dar Permissão ao Especialista</h2>
+        <div class="input-group">
+            <form class = "perm_esp_form">
+                <label for="Id_perm_esp">Id: </label>
+                <input type="text"id="Id_perm_esp">
+                
+                <button type="submit" class="btn btn-warning">Send</button>
+            </form>
+        </div>
+        <br>
+    </div>
+
+    <div class = "container">
+        <br>
+        <h2>Sóbrio Checkin</h2>
+        <div class="input-group">
+            <form class = "sobrio_form">
+                <label for="Id_sobrio">Id: </label>
+                <input type="text"id="Id_sobrio">
+                <button type="submit" class="btn btn-info">Checkin</button>
+            </form>
+        </div>
+        <br>
     </div>
     
     
