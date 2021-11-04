@@ -7,7 +7,7 @@ const url_get_cards = "http://localhost:3000/api/cards/reads";
 const getCardByIdForm = document.querySelector(".get-card-form");
 const card_id_get = document.querySelector("#getCardsByid");
 const getCardField = document.querySelector(".CardsFiled");
-const url_get_cards_by_id = "http://localhost:3000/api/cards/read/";
+const url_get_cards_by_id = "http://localhost:3000/api/cards/getCardsAndReactions/";
 
 // delete card por id
 
@@ -82,6 +82,16 @@ const url_post_cards_geral = "http://localhost:3000/api/cards/create_geral/";
 const titulo_Geral_Value = document.getElementById("titulo-geral-value");
 const conteudo_Geral_Value = document.getElementById("conteudo-geral-value");
 const user_Geral_Value = document.getElementById("user-geral-value");
+
+//Thumb Increase
+const url_thumbs_inc = "http://localhost:3000/api/cards/thumbsUpInc/";
+const thumbsUpIncForm = document.querySelector(".thumbsinc_form");
+const thumbsUpIncValue = document.getElementById("Id_thumbsinc");
+
+//Thumb decrease
+const url_thumbs_dec = "http://localhost:3000/api/cards/thumbsUpDec/";
+const thumbsUpDecForm = document.querySelector(".thumbsdec_form");
+const thumbsUpDecValue = document.getElementById("Id_thumbsdec");
 
 
 addCardsGeralForm.addEventListener("submit",async (e) =>{
@@ -163,6 +173,7 @@ getCardByIdForm.addEventListener("submit", async(e)=>{
     .then(res => res.json())
     .then((data) => {
         var card = data.Cards
+        console.log(card);
         let titulo = card.titulo === undefined ? "empty field" : card.titulo;
         let subtitulo = card.subtitulo === undefined ? "empty field" : card.subtitulo;
         let descricao = card.descricao === undefined ? "empty field" : card.descricao;
@@ -172,23 +183,38 @@ getCardByIdForm.addEventListener("submit", async(e)=>{
         let link_ext = card.link_ext === undefined ? "empty field" : card.link_ext;
         let thumbsup = card.thumbsup === undefined ? "empty field" : card.thumbsup;
       
-        output = `
-            <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title"><b>Titulo: </b> ${titulo}</h5>
-                <h5 class="card-title"><b>Subtitulo: </b> ${subtitulo}</h5>
-                <h5 class="card-title"><b>Descricao:</h5>
-                <p class="card-text">${descricao}</p>
-                <h5 class="card-title"><b>Conteúdo:</h5>
-                <p class="card-text">${conteudo}</p>
-                <h5 class="card-title"><b>Imagens: </b> ${imgs}</h5>
-                <h5 class="card-title"><b>Videos: </b> ${videos}</h5>
-                <h5 class="card-title"><b>Links externos: </b> ${link_ext}</h5>
-                <h5 class="card-title"><b>Thumbs up: </b> ${thumbsup}</h5>
-            </div>
-            </div>
-            <br>
-        `;
+        var reaction = card.user_commenters;
+        var subBody = "";
+        for(let i = 0; i < reaction.length; i++){
+          subBody += ` <h5 class="card-title"><b>Nome: </b>${reaction[i].nome} ${reaction[i].sobrenome}</h5>` + 
+                     ` <pclass="card-text">${reaction[i].comentario}</p>`;
+        }
+        
+        var subhead = `<div class="card" style="width: 18rem;"> <div class="card-body">`;
+        var subtail = `</div></div>`;
+
+        var chest = subhead + subBody + subtail;
+
+        var head = `<div class="card" style="width: 18rem;"> <div class="card-body">`
+
+        var neck = `<h5 class="card-title"><b>Titulo: </b> ${titulo}</h5>
+                    <h5 class="card-title"><b>Subtitulo: </b> ${subtitulo}</h5>
+                    <h5 class="card-title"><b>Descricao:</h5>
+                    <p class="card-text">${descricao}</p>
+                    <h5 class="card-title"><b>Conteúdo:</h5>
+                    <p class="card-text">${conteudo}</p>
+                    <h5 class="card-title"><b>Imagens: </b> ${imgs}</h5>
+                    <h5 class="card-title"><b>Videos: </b> ${videos}</h5>
+                    <h5 class="card-title"><b>Links externos: </b> ${link_ext}</h5>
+                    <h5 class="card-title"><b>Thumbs up: </b> ${thumbsup}</h5>
+                    <h4>Reactions: </h4>
+
+                    `;
+                    
+        var tail = `</div></div>`
+
+        output += head + neck + chest+ tail;
+
         getCardField.innerHTML = ""; // limpa a div de listagem 
         getCardField.innerHTML = output;
     });
@@ -253,4 +279,26 @@ updateCardByIdForm.addEventListener("submit", async(e) =>{
     .then(data => {
       console.log(data);
     });
+});
+
+thumbsUpIncForm.addEventListener("submit", async(e)=>{
+    e.preventDefault(); // elimina reload ao submeter form
+    fetch(url_thumbs_inc + thumbsUpIncValue.value, {
+    method: "PUT",
+    headers:{
+    "Content-Type": "application/json"
+    }
+    }).then(res => res.json())
+
+});
+
+thumbsUpDecForm.addEventListener("submit", async(e)=>{
+    e.preventDefault(); // elimina reload ao submeter form
+    fetch(url_thumbs_dec + thumbsUpDecValue.value, {
+    method: "PUT",
+    headers:{
+    "Content-Type": "application/json"
+    }
+    }).then(res => res.json())
+
 });

@@ -48,12 +48,7 @@
                     <label for = "descricao">Descricao</label>
                     <textarea type="text" class="form-control" id="descricao-value"></textarea>
                 </div>
-<!--             
-                <div class= "form-group">
-                    <label for = "perfil">Perfil</abel>
-                    <input type="text" class="form-control" id="perfil-vlue">
-                </div>
--->   
+ 
                 <div class="form-group">
                     <label for="perfil"><strong>Perfil</strong></label>
                     <select id="perfil-value" class="form-control"required>
@@ -103,139 +98,133 @@
         </div>
     <br><br>
 <!--Listar Usuarios-->
-    <div class = "container"> 
-        <h2>Listar Usuários cadastrados</h2>
-        <br>
-        <button type="button" class="btn btn-success" id = "listarusers">Listar</button>
-        <br> <br>
-        <div class="userFileds row"></div>
-    </div>
-
-    <div class = "container"> 
-    <h2>Listar Usuário por id</h2>
-    <form class = "get-user-form">
-        <label for="getById">Get user by Id </label>
-        <input type="text"id="getUserByid">
-        <button type= "submit" class="btn btn-primary">get User</button>
-    </form>
-    <br>
-    
-    <div class= "getUser row"></div>
-    </div>
-
-    <div class = "container"> 
-    <h2>Deletar Usuário por id</h2>
-
-    <form class = "delete-user-form">
-        <label for="deleteUserbyId">Delete user by Id </label>
-        <input type="text"id="deleteUserbyId">
-        <button type= "submit" class="btn btn-primary">get User</button>
-    </form>
-    <br>
-    <div class= "deleteUser row"></div>
-
-    </div>
-
-
-    <div class = "container">
-    <h2>Update User By Id</h2>
-    <div class="input-group">
-        <form class = "update-user-form">
-            <select class="form-select" id= "campo-value">
-                <option selected disabled value="">Choose...</option>
-                <option value="0">Nome</option>
-                <option value="1">Sobrenome</option>
-                <option value="2">Idade</option>
-                <option value="3">CPF</option>
-                <option value="4">Ocupacao</option>
-                <option value="5">Descricao</option>
-                <option value="6">Perfil</option>
-                <option value="7">Imagem perfil</option>
-                <option value="8">link_docs</option>
-                <option value="9">Dependencia</option>
-                <option value="10">Relacao com a familia</option>
-            </select>
-            <label for="Id_up">Id: </label>
-            <input type="text"id="updateUserById">
-
-            <label for="conteudo_up">Conteudo: </label>
-            <input type="text"id="conteudo_up">
-
-            <button type= "submit" class="btn btn-primary">Update</button>
-        </form>
-    </div>
-    <br>
-    </div>
-
-    <div class = "container">
-        <h2>Status online</h2>
-        <h3 id = "onlineStatus"></h3>
-        <div class="input-group">
-            <form class = "status_online_form">
-                <select class="form-select" id= "status-value">
-                    <option selected disabled value="">Choose...</option>
-                    <option value="1">Online</option>
-                    <option value="0">Offline</option>
-                </select>
-
-                <label for="Id_status">Id: </label>
-                <input type="text"id="Id_status">
-                
-                <button type="submit" class="btn btn-warning">Send</button>
-            </form>
+        <div class = "container"> 
+            <h2>Listar Usuários cadastrados</h2>
+            <br>
+            <button type="button" class="btn btn-success" id = "listarusers">Listar</button>
+            <br> <br>
+            <div class="userFileds row"></div>
         </div>
-    </div>
-
-    <div class = "container">
-        <br>
-        <h2>Visibilidade pública</h2>
-        <div class="input-group">
-            <form class = "visi_pub_form">
-                <select class="form-select" id= "visi_pub-value">
-                    <option selected disabled value="">Choose...</option>
-                    <option value="0">False</option>
-                    <option value="1">True</option>
-                </select>
-
-                <label for="Id_visi_pub">Id: </label>
-                <input type="text"id="Id_visi_pub">
-                
-                <button type="submit" class="btn btn-warning">Send</button>
+<!--Listar Usuario por id-->
+        <div class = "container"> 
+            <h2>Listar Usuário por id</h2>
+            <form class = "get-user-form">
+                <label for="getById">Get user by Id </label>
+                <input type="text"id="getUserByid">
+                <button type= "submit" class="btn btn-primary">get User</button>
             </form>
+            <br>
+            
+            <div class= "getUser row"></div>
         </div>
-        <br>
-    </div>
+<!--Deletar Usuario por id-->
+        <div class = "container"> 
+            <h2>Deletar Usuário por id</h2>
 
-    <div class = "container">
-        <br>
-        <h2>Dar Permissão ao Especialista</h2>
-        <div class="input-group">
-            <form class = "perm_esp_form">
-                <label for="Id_perm_esp">Id: </label>
-                <input type="text"id="Id_perm_esp">
-                
-                <button type="submit" class="btn btn-warning">Send</button>
+            <form class = "delete-user-form">
+                <label for="deleteUserbyId">Delete user by Id </label>
+                <input type="text"id="deleteUserbyId">
+                <button type= "submit" class="btn btn-primary">get User</button>
             </form>
+            <br>
+            <div class= "deleteUser row"></div>
         </div>
-        <br>
-    </div>
+<!--Update Usuario por id-->
+        <div class = "container">
+            <h2>Update User By Id</h2>
+            <div class="input-group">
+                <form class = "update-user-form">
+                    <select class="form-select" id= "campo-value">
+                        <option selected disabled value="">Choose...</option>
+                        <option value="0">Nome</option>
+                        <option value="1">Sobrenome</option>
+                        <option value="2">Idade</option>
+                        <option value="3">CPF</option>
+                        <option value="4">Ocupacao</option>
+                        <option value="5">Descricao</option>
+                        <option value="6">Perfil</option>
+                        <option value="7">Imagem perfil</option>
+                        <option value="8">link_docs</option>
+                        <option value="9">Dependencia</option>
+                        <option value="10">Relacao com a familia</option>
+                    </select>
+                    <label for="Id_up">Id: </label>
+                    <input type="text"id="updateUserById">
 
-    <div class = "container">
-        <br>
-        <h2>Sóbrio Checkin</h2>
-        <div class="input-group">
-            <form class = "sobrio_form">
-                <label for="Id_sobrio">Id: </label>
-                <input type="text"id="Id_sobrio">
-                <button type="submit" class="btn btn-info">Checkin</button>
-            </form>
+                    <label for="conteudo_up">Conteudo: </label>
+                    <input type="text"id="conteudo_up">
+
+                    <button type= "submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+            <br>
         </div>
-        <br>
-    </div>
-    
-    
-    
-    
-</body>
+<!--Status online-->
+        <div class = "container">
+            <h2>Status online</h2>
+            <h3 id = "onlineStatus"></h3>
+            <div class="input-group">
+                <form class = "status_online_form">
+                    <select class="form-select" id= "status-value">
+                        <option selected disabled value="">Choose...</option>
+                        <option value="1">Online</option>
+                        <option value="0">Offline</option>
+                    </select>
+
+                    <label for="Id_status">Id: </label>
+                    <input type="text"id="Id_status">
+                    
+                    <button type="submit" class="btn btn-warning">Send</button>
+                </form>
+            </div>
+        </div>
+<!--Visibilidade pública-->
+        <div class = "container">
+            <br>
+            <h2>Visibilidade pública</h2>
+            <div class="input-group">
+                <form class = "visi_pub_form">
+                    <select class="form-select" id= "visi_pub-value">
+                        <option selected disabled value="">Choose...</option>
+                        <option value="0">False</option>
+                        <option value="1">True</option>
+                    </select>
+
+                    <label for="Id_visi_pub">Id: </label>
+                    <input type="text"id="Id_visi_pub">
+                    
+                    <button type="submit" class="btn btn-warning">Send</button>
+                </form>
+            </div>
+            <br>
+        </div>
+<!--Dar Permissão ao Especialista-->
+        <div class = "container">
+            <br>
+            <h2>Dar Permissão ao Especialista</h2>
+            <div class="input-group">
+                <form class = "perm_esp_form">
+                    <label for="Id_perm_esp">Id: </label>
+                    <input type="text"id="Id_perm_esp">
+                    
+                    <button type="submit" class="btn btn-warning">Send</button>
+                </form>
+            </div>
+            <br>
+        </div>
+<!--Sóbrio Checkin-->
+        <div class = "container">
+            <br>
+            <h2>Sóbrio Checkin</h2>
+            <div class="input-group">
+                <form class = "sobrio_form">
+                    <label for="Id_sobrio">Id: </label>
+                    <input type="text"id="Id_sobrio">
+                    <button type="submit" class="btn btn-info">Checkin</button>
+                </form>
+            </div>
+            <br>
+        </div>
+    </body>
     <script src="js/userFeatures.js"></script>
 </html>

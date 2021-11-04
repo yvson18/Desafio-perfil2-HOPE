@@ -92,4 +92,14 @@ router.put("/thumbsUpDec/:id_card", (req,res)=>{
     });
 });
 
+router.get("/getCardsAndReactions/:id_card",(req,res)=>{
+    CardsQuerier.getCardsAndReactions(req.params.id_card).then((results)=>{
+        res.status(201).json({Cards: results});
+    })
+    .catch((error) => {
+        res.status(417).json({title: "error", status: error.errno,message: error})
+    });
+});
+
+
 module.exports = router;
