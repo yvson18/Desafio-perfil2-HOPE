@@ -55,7 +55,7 @@ addCardsForm.addEventListener("submit",async (e) =>{
           tipo: tipo_Value.value,
     }
 
-    console.log(corpo);
+    
   
     var newCorpo = Object.keys(corpo).reduce((object, key) => {
       if(corpo[key] !== "") {
@@ -63,7 +63,7 @@ addCardsForm.addEventListener("submit",async (e) =>{
       }
       return object
     }, {})
-  
+    console.log(user_Geral_Value.value);
     fetch(url_post_cards + user_Value.value,{
       method: "POST",
       headers:{
@@ -102,7 +102,7 @@ addCardsGeralForm.addEventListener("submit",async (e) =>{
           tipo: 9,
     }
 
-    console.log(corpo);
+    
   
     var newCorpo = Object.keys(corpo).reduce((object, key) => {
       if(corpo[key] !== "") {
@@ -157,7 +157,7 @@ function renderCards(data){
 }
 
 botaoListarCards.addEventListener("click",async ()=>{
-    console.log("Entrei");
+    
     fetch(url_get_cards)
     .then(res => res.json())
     .then(data => renderCards(data));
@@ -166,7 +166,7 @@ botaoListarCards.addEventListener("click",async ()=>{
 // Get Card by Id
 getCardByIdForm.addEventListener("submit", async(e)=>{
     e.preventDefault(); // elimina reload ao submeter form
-    console.log(card_id_get.value);
+    
     var output = "";
   // Get nos users
     fetch(url_get_cards_by_id + card_id_get.value)
@@ -223,7 +223,7 @@ getCardByIdForm.addEventListener("submit", async(e)=>{
 // Delete Cards
 deleteCardByIdForm.addEventListener("submit",async(e)=>{
     e.preventDefault(); // elimina reload ao submeter form
-    console.log(url_delete_cards_by_id + card_id_delete.value);
+    
     fetch(url_delete_cards_by_id + card_id_delete.value, {
       method: "DELETE",
       headers:{
@@ -268,7 +268,7 @@ updateCardByIdForm.addEventListener("submit", async(e) =>{
     e.preventDefault(); // elimina reload ao submeter form
     
     var object_update = JSON.parse(`{"${updateCampoValue.value}" : "${updateValue.value}"}`);
-    console.log(object_update);
+    
     fetch(url_update_cards_by_id + card_id_update.value, {
       method: "PUT",
       headers:{

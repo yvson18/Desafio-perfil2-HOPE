@@ -49,7 +49,7 @@ router.put("/update/:id",(req,res)=>{
 //------------------- DICAS, FATOS, MOTIVACIONAL, ARTIGO, HISTORIA DE SUCESSO, VIDEOS, PERGUNTAS ----------------
 router.post("/create_esp/:id_user",(req,res)=>{
     CardsQuerier.createEspCard(req.params.id_user,req.body).then((result)=>{
-        //console.log(req.params.id_user)
+        
         if(result == -1){
             res.status(422).json({erro: "Usuario nao especialista!"});
             return;

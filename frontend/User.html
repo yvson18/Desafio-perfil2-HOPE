@@ -24,8 +24,8 @@
                     <input type="text" class="form-control" id="sobrenome-value" required>
                 </div>
                 <div class= "form-group">
-                    <label for = "idade">Idade</label>
-                    <input type="text" class="form-control" id="idade-value">
+                    <label for = "idade"><b>Idade</b></label>
+                    <input type="text" class="form-control" id="idade-value"required>
                 </div>
                 <div class= "form-group">
                     <label for = "cpf"><b>CPF</b></label>
@@ -58,6 +58,10 @@
                       <option value="3">Ex-dependente</option>
                       <option value="4">Especialista</option>
                     </select>
+                </div>
+                <div class= "form-group">
+                    <label for = "nome">Link Documentos</label>
+                    <input type="text" class="form-control" id="link-docs">
                 </div>
                 <div class= "form-group">
                     <label for = "img">Imagem Url</label>
@@ -99,7 +103,7 @@
     <br><br>
 <!--Listar Usuarios-->
         <div class = "container"> 
-            <h2>Listar Usuários cadastrados</h2>
+            <h2>Listar Usuários cadastrados(visivelmente públicos)</h2>
             <br>
             <button type="button" class="btn btn-success" id = "listarusers">Listar</button>
             <br> <br>
@@ -124,7 +128,7 @@
             <form class = "delete-user-form">
                 <label for="deleteUserbyId">Delete user by Id </label>
                 <input type="text"id="deleteUserbyId">
-                <button type= "submit" class="btn btn-primary">get User</button>
+                <button type= "submit" class="btn btn-primary">delete User</button>
             </form>
             <br>
             <div class= "deleteUser row"></div>

@@ -20,6 +20,7 @@ const passwordValue = document.getElementById("password-value");
 const ocupacaoValue = document.getElementById("ocupacao-value");
 const descricaoValue = document.getElementById("descricao-value");
 const perfilValue = document.getElementById("perfil-value");
+const link_docsValue = document.getElementById("link-docs");
 const imagemValue = document.getElementById("img-value");
 const pubViValue = document.getElementById("pub-men-value");
 const diasSobrioValue = document.getElementById("dias_sobrio-value");
@@ -70,23 +71,27 @@ const url_sobrio_checkin = "http://localhost:3000/api/users/sobrio_checkin/";
 function renderUsers(data){
   let output = "";
   for(let user of data.User){
-    let nome = user.nome + " " + user.sobrenome;
-    let idade = user.idade === undefined ? "" : user.idade;
-    let ocupacao = user.ocupacao === undefined ? "" : user.ocupacao;
-    let descricao = user.descricao === undefined ? "" : user.descricao;
-    output += `
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title"><b>Nome: </b> ${nome}</h5>
-        <h5 class="card-title"><b>Idade: </b> ${idade}</h5>
-        <h5 class="card-title"><b>Ocupacao: </b> ${ocupacao}</h5>
-        <h5 class="card-title"><b>Ocupacao: </b> ${ocupacao}</h5>
-        <h5 class="card-title"><b>Descricao:</h5>
-        <p class="card-text">${descricao}</p>
+    if(user.pub_men === true){
+      let nome = user.nome + " " + user.sobrenome;
+      let idade = user.idade === undefined ? "" : user.idade;
+      let ocupacao = user.ocupacao === undefined ? "" : user.ocupacao;
+      let descricao = user.descricao === undefined ? "" : user.descricao;
+      let online = user.online === false ? "Offline" : "Online";
+      output += `
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><b>Nome: </b> ${nome}</h5>
+          <h5 class="card-title"><b>Idade: </b> ${idade}</h5>
+          <h5 class="card-title"><b>Ocupacao: </b> ${ocupacao}</h5>
+          <h5 class="card-title"><b>Online Status: </b> ${online}</h5>
+          <h5 class="card-title"><b>Descricao:</h5>
+          <p class="card-text">${descricao}</p>
+        </div>
       </div>
-    </div>
-    <br>
-    `;
+      <br>
+      `;
+    }
+     
   }
   usersList.innerHTML = ""; // limpa a div de listagem 
   usersList.innerHTML = output;
@@ -144,6 +149,7 @@ addUserForm.addEventListener("submit",async (e) =>{
         ocupacao: ocupacaoValue.value,
         descricao: descricaoValue.value,
         perfil: perfilValue.value,
+        link_docs: link_docsValue.value,
         img: imagemValue.value,
         pub_men:  pubViValue.value,
         dias_sobrio: diasSobrioValue.value,

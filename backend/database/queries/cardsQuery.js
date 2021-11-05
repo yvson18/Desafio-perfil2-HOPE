@@ -5,6 +5,7 @@ const reaction_infos = require("../models/Reactions");
 
 exports.createEspCard = async (id_user, input) =>{
     const user = await User.readUserById(id_user);
+    console.log()
     if(user.perfil === 4){
         var postagem = JSON.parse(JSON.stringify(input));
         postagem.user = id_user;
